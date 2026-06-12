@@ -32,7 +32,8 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/SwiftyBeaver/SwiftyBeaver", from: "1.9.0"),
-        .package(url: "https://github.com/partout-io/openssl-apple", from: "3.2.105")
+        // 锁定 OpenSSL 3.5 LTS 线 (维护至 2030-04), upToNextMinor 只接受 3.5.x 内的 patch 升级
+        .package(url: "https://github.com/partout-io/openssl-apple", .upToNextMinor(from: "3.5.501"))
     ],
     targets: [
         .target(

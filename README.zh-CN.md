@@ -55,6 +55,7 @@ rules:
 
 - 协议引擎与应用的接触面被刻意压到最小 (隧道子类 + 解析 + 连接管理三处), 为未来切换 WireGuard 留好接口
 - TunnelKit v6.3.2 已 vendor 至 `Vendor/tunnelkit/` 并剥离 WireGuard 部分 (上游仓库已归档, 其依赖的 wireguard-apple 仓库已被删除, 远端引用不再可靠), 修改声明见 [Vendor/tunnelkit/LITEVPN-MODIFICATIONS.md](Vendor/tunnelkit/LITEVPN-MODIFICATIONS.md)
+- 加密层通过 `.upToNextMinor` 锁定在 OpenSSL **3.5 LTS** 线 (维护期至 2030 年 4 月), 依赖解析只会升 3.5.x 内的 patch 版本, 不会漂移到短维护期的版本线
 
 ## 构建
 
@@ -92,7 +93,7 @@ xcodebuild -project LiteVPN.xcodeproj -scheme LiteVPN \
 ## 致谢
 
 - [TunnelKit](https://github.com/partout-io/tunnelkit) by Davide De Rosa —— OpenVPN 协议引擎
-- [OpenSSL](https://github.com/partout-io/openssl-apple) —— 加密层
+- [OpenSSL](https://github.com/partout-io/openssl-apple) —— 加密层 (3.5 LTS)
 
 ## 许可证
 

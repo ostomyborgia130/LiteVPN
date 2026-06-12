@@ -11,5 +11,7 @@
    `openssl-apple` 依赖地址更新为迁移后的 `partout-io/openssl-apple`.
 2. 删除 `Sources/TunnelKitWireGuard*` 目录 (LiteVPN 仅使用 OpenVPN).
 3. 删除 `Package.resolved`.
+4. `openssl-apple` 依赖锁定到 OpenSSL 3.5 LTS 线 (`.upToNextMinor(from: "3.5.501")`,
+   维护期至 2030-04), 避免自动漂移到非 LTS 版本线.
 
 除上述外, 其余源代码与上游 v6.3.2 完全一致.

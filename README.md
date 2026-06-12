@@ -55,6 +55,7 @@ If you access intranet services by domain name, add those domains to Clash's `fa
 
 - The protocol engine surface is kept deliberately small (tunnel subclass + parser + connection manager), leaving room for a future WireGuard engine
 - TunnelKit v6.3.2 is vendored at `Vendor/tunnelkit/` with WireGuard stripped (upstream is archived and its wireguard-apple dependency repo was deleted, so remote references are no longer reliable) — see [Vendor/tunnelkit/LITEVPN-MODIFICATIONS.md](Vendor/tunnelkit/LITEVPN-MODIFICATIONS.md)
+- The crypto layer is pinned to the OpenSSL **3.5 LTS** line (supported until April 2030) via `.upToNextMinor`, so dependency resolution only picks up 3.5.x patch releases and never drifts onto a short-lived release line
 
 ## Building
 
@@ -92,7 +93,7 @@ On first connect macOS will ask to add a VPN configuration — allow it once.
 ## Credits
 
 - [TunnelKit](https://github.com/partout-io/tunnelkit) by Davide De Rosa — OpenVPN protocol engine
-- [OpenSSL](https://github.com/partout-io/openssl-apple) — crypto layer
+- [OpenSSL](https://github.com/partout-io/openssl-apple) — crypto layer (3.5 LTS)
 
 ## License
 
