@@ -1,0 +1,33 @@
+/* 状态 */
+"Connected" = "已连接";
+"Connecting" = "连接中";
+"Disconnecting" = "断开中";
+"Not Connected" = "未连接";
+
+/* 统计 */
+"Duration" = "时长";
+"Down" = "下行";
+"Up" = "上行";
+
+/* 操作 */
+"Connect" = "连接";
+"Disconnect" = "断开连接";
+"Cancel" = "取消";
+"Disconnecting…" = "断开中…";
+"Delete" = "删除";
+"Quit" = "退出";
+"Import" = "导入";
+
+/* 配置 */
+"Profiles" = "配置";
+"Drop .ovpn files here to import" = "拖入 .ovpn 文件即可导入";
+"Choose .ovpn configuration files" = "选择 .ovpn 配置文件";
+
+/* 设置 */
+"Clash Compatible Mode" = "Clash 兼容模式";
+"Leaves the default route alone, routes VPN subnets only" = "不接管默认路由, 仅路由 VPN 网段";
+"Launch at Login" = "开机启动";
+
+/* 错误 */
+"Unable to read file contents" = "无法读取文件内容";
+"This profile requires username/password authentication. Only certificate-embedded profiles are supported." = "该配置需要用户名密码认证, 当前版本仅支持证书内嵌的配置";

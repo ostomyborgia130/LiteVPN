@@ -1,0 +1,33 @@
+/* Status */
+"Connected" = "Connected";
+"Connecting" = "Connecting";
+"Disconnecting" = "Disconnecting";
+"Not Connected" = "Not Connected";
+
+/* Stats */
+"Duration" = "Duration";
+"Down" = "Down";
+"Up" = "Up";
+
+/* Actions */
+"Connect" = "Connect";
+"Disconnect" = "Disconnect";
+"Cancel" = "Cancel";
+"Disconnecting…" = "Disconnecting…";
+"Delete" = "Delete";
+"Quit" = "Quit";
+"Import" = "Import";
+
+/* Profiles */
+"Profiles" = "Profiles";
+"Drop .ovpn files here to import" = "Drop .ovpn files here to import";
+"Choose .ovpn configuration files" = "Choose .ovpn configuration files";
+
+/* Settings */
+"Clash Compatible Mode" = "Clash Compatible Mode";
+"Leaves the default route alone, routes VPN subnets only" = "Leaves the default route alone, routes VPN subnets only";
+"Launch at Login" = "Launch at Login";
+
+/* Errors */
+"Unable to read file contents" = "Unable to read file contents";
+"This profile requires username/password authentication. Only certificate-embedded profiles are supported." = "This profile requires username/password authentication. Only certificate-embedded profiles are supported.";

@@ -28,9 +28,12 @@ final class ProfileStore: ObservableObject {
         var errorDescription: String? {
             switch self {
             case .unreadable:
-                return "无法读取文件内容"
+                return NSLocalizedString("Unable to read file contents", comment: "import error")
             case .needsCredentials:
-                return "该配置需要用户名密码认证, 当前版本仅支持证书内嵌的配置"
+                return NSLocalizedString(
+                    "This profile requires username/password authentication. Only certificate-embedded profiles are supported.",
+                    comment: "import error"
+                )
             }
         }
     }

@@ -57,7 +57,7 @@ struct MenuView: View {
                 Image(systemName: "bolt.shield.fill")
                     .font(.system(size: 15, weight: .medium))
                     .foregroundStyle(Theme.green)
-                Text("LiteVPN")
+                Text(verbatim: "LiteVPN")
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundStyle(Theme.textPrimary)
             }
@@ -88,12 +88,12 @@ struct MenuView: View {
         }
     }
 
-    private var statusText: String {
+    private var statusText: LocalizedStringKey {
         switch vpn.status {
-        case .connected: return "已连接"
-        case .connecting: return "连接中"
-        case .disconnecting: return "断开中"
-        case .disconnected: return "未连接"
+        case .connected: return "Connected"
+        case .connecting: return "Connecting"
+        case .disconnecting: return "Disconnecting"
+        case .disconnected: return "Not Connected"
         }
     }
 
@@ -103,20 +103,20 @@ struct MenuView: View {
     private var statusSection: some View {
         if vpn.status == .connected {
             HStack(spacing: 0) {
-                statTile(label: "时长") {
+                statTile(label: "Duration") {
                     if let date = vpn.connectedDate {
                         Text(date, style: .timer)
                     } else {
-                        Text("—")
+                        Text(verbatim: "—")
                     }
                 }
                 tileDivider
-                statTile(label: "下行") {
-                    Text(vpn.dataCount.map { format($0.received) } ?? "—")
+                statTile(label: "Down") {
+                    Text(verbatim: vpn.dataCount.map { format($0.received) } ?? "—")
                 }
                 tileDivider
-                statTile(label: "上行") {
-                    Text(vpn.dataCount.map { format($0.sent) } ?? "—")
+                statTile(label: "Up") {
+                    Text(verbatim: vpn.dataCount.map { format($0.sent) } ?? "—")
                 }
             }
             .background(Theme.bgSubtle)
@@ -129,7 +129,7 @@ struct MenuView: View {
             .padding(.bottom, 12)
         }
         if let message = vpn.lastErrorMessage ?? importErrorMessage {
-            Text(message)
+            Text(verbatim: message)
                 .font(.system(size: 11))
                 .foregroundStyle(Theme.red)
                 .lineLimit(3)
@@ -141,7 +141,7 @@ struct MenuView: View {
         }
     }
 
-    private func statTile(label: String, @ViewBuilder value: () -> some View) -> some View {
+    private func statTile(label: LocalizedStringKey, @ViewBuilder value: () -> some View) -> some View {
         VStack(spacing: 3) {
             Text(label)
                 .font(.system(size: 10, weight: .medium))
@@ -181,12 +181,12 @@ struct MenuView: View {
         .opacity(vpn.status == .disconnected && store.selectedProfile == nil ? 0.5 : 1)
     }
 
-    private var buttonText: String {
+    private var buttonText: LocalizedStringKey {
         switch vpn.status {
-        case .connected: return "断开连接"
-        case .connecting: return "取消"
-        case .disconnecting: return "断开中…"
-        case .disconnected: return "连接"
+        case .connected: return "Disconnect"
+        case .connecting: return "Cancel"
+        case .disconnecting: return "Disconnecting…"
+        case .disconnected: return "Connect"
         }
     }
 
@@ -211,12 +211,12 @@ struct MenuView: View {
     private var profileSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text("配置")
+                Text("Profiles")
                     .font(.system(size: 11, weight: .medium))
                     .foregroundStyle(Theme.textSecondary)
                 Spacer()
                 Button(action: importFromPanel) {
-                    Label("导入", systemImage: "plus")
+                    Label("Import", systemImage: "plus")
                         .font(.system(size: 11, weight: .medium))
                         .foregroundStyle(Theme.greenDark)
                 }
@@ -241,7 +241,7 @@ struct MenuView: View {
             Image(systemName: "arrow.down.doc")
                 .font(.system(size: 16))
                 .foregroundStyle(Theme.textSecondary)
-            Text("拖入 .ovpn 文件即可导入")
+            Text("Drop .ovpn files here to import")
                 .font(.system(size: 11))
                 .foregroundStyle(Theme.textSecondary)
         }
@@ -260,7 +260,7 @@ struct MenuView: View {
             Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                 .font(.system(size: 13))
                 .foregroundStyle(isSelected ? Theme.green : Theme.border)
-            Text(profile.name)
+            Text(verbatim: profile.name)
                 .font(.system(size: 12, weight: isSelected ? .medium : .regular))
                 .foregroundStyle(Theme.textPrimary)
                 .lineLimit(1)
@@ -287,7 +287,7 @@ struct MenuView: View {
             selectProfile(profile)
         }
         .contextMenu {
-            Button("删除", role: .destructive) {
+            Button("Delete", role: .destructive) {
                 if vpn.status != .disconnected && store.selectedProfileID == profile.id {
                     vpn.disconnect()
                 }
@@ -312,12 +312,12 @@ struct MenuView: View {
     private var settingsSection: some View {
         VStack(spacing: 10) {
             settingRow(
-                title: "Clash 兼容模式",
-                subtitle: "不接管默认路由, 仅路由 VPN 网段",
+                title: "Clash Compatible Mode",
+                subtitle: "Leaves the default route alone, routes VPN subnets only",
                 isOn: $clashCompatMode
             )
             settingRow(
-                title: "开机启动",
+                title: "Launch at Login",
                 subtitle: nil,
                 isOn: $launchAtLogin
             )
@@ -335,7 +335,7 @@ struct MenuView: View {
         }
     }
 
-    private func settingRow(title: String, subtitle: String?, isOn: Binding<Bool>) -> some View {
+    private func settingRow(title: LocalizedStringKey, subtitle: LocalizedStringKey?, isOn: Binding<Bool>) -> some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 2) {
                 Text(title)
@@ -360,11 +360,11 @@ struct MenuView: View {
 
     private var footer: some View {
         HStack {
-            Text("v1.0.0")
+            Text(verbatim: "v1.0.0")
                 .font(.system(size: 10))
                 .foregroundStyle(Theme.textSecondary.opacity(0.7))
             Spacer()
-            Button("退出") {
+            Button("Quit") {
                 NSApplication.shared.terminate(nil)
             }
             .buttonStyle(.plain)
@@ -390,7 +390,7 @@ struct MenuView: View {
         let panel = NSOpenPanel()
         panel.allowedContentTypes = [UTType(filenameExtension: "ovpn") ?? .data]
         panel.allowsMultipleSelection = true
-        panel.message = "选择 .ovpn 配置文件"
+        panel.message = NSLocalizedString("Choose .ovpn configuration files", comment: "open panel message")
         NSApp.activate(ignoringOtherApps: true)
         guard panel.runModal() == .OK else {
             return
